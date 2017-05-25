@@ -46,7 +46,10 @@ namespace TCP_server
 
                 klient = serwer.AcceptTcpClient();
 
-                info_o_polaczeniu.Items.Add("Nawiązano półączenie!");
+                IPEndPoint IP = (IPEndPoint)klient.Client.RemoteEndPoint;
+                info_o_polaczeniu.Items.Add("[" + IP.ToString() +
+                    "] :Nawioazano połączenie");
+            //    info_o_polaczeniu.Items.Add("Nawiązano półączenie!");
                 start.Enabled = false;
                 stop.Enabled = true;
                 klient.Close();
